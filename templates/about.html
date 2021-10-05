@@ -1,4 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>About Page</h1>
+
+    
+    <h2>{{ page_title }}</h2>
+    <p>
+        A book discussion club is a group of people who meet to discuss a book or books that they have read and express
+        their opinions, likes, dislikes, etc. It is more often called simply a book club, a term that is also used to
+        describe a book sales club, which can cause confusion. Other frequently used terms to describe a book discussion
+        club include reading group, book group, and book discussion group. Book discussion clubs may meet in private
+        homes, libraries, bookstores, online forums, pubs, and in cafés or restaurants over meals or drinks.
+
+        A practice also associated with book discussion, common reading program or common read, involves institutions
+        encouraging their members to discuss select books in group settings; common reading programs are largely
+        associated with educational institutions encouraging their students to hold book discussion meetings.
+    </p>
+
+    {% for member in company %}
+
+
+    <div class="row featurette">
+        
+        {% if loop.index % 2 != 0 %}
+
+        <div class="col-md-7">
+            <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+            <p>{{ member.description }}</p>
+        </div>
+
+        <div class="col-md-5">
+            <img src="{{ member.image_source }}" class="featurette-image image-responsive" style="width: 100%;" alt="">
+        </div>
+
+        {% else %}
+
+        <div class="col-md-5">
+            <img src="{{ member.image_source }}" class="featurette-image image-responsive" style="width: 100%;" alt="">
+        </div>
+        <div class="col-md-7">
+            <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+            <p>{{ member.description }}</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    {% if loop.index != loop.length %}
+
+        <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
+
 {% endblock %}
