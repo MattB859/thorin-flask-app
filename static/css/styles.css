@@ -76,6 +76,14 @@
   }
 }
 
+.flashes{
+  padding: 25px;
+  background-color: #226a74;
+  box-shadow: 5px 5px 10px #111;
+  list-style: none;
+  color: #fff;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
